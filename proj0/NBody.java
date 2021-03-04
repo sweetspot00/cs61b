@@ -22,7 +22,7 @@ public class NBody{
         }
         return Double.parseDouble(data);
     }
-    public static boolean isDouble(String input) {
+    private static boolean isDouble(String input) {
         Matcher mer = Pattern.compile("-?[0-9]+.*[0-9]*").matcher(input);
         return mer.find();
     }
@@ -40,7 +40,7 @@ public class NBody{
                 if(cnt>=2 ){
                     if(d.length==7 && isDouble(d[1])) {
                     
-                        System.out.println(d[0]+"this is the img");
+                        // System.out.println(d[0]+"this is the img");
                         b.add(new Planet(Double.parseDouble(d[1]),
                         Double.parseDouble(d[2]),
                         Double.parseDouble(d[3]),
