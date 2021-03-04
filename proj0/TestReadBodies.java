@@ -38,7 +38,7 @@ public class TestReadBodies {
         for (Body p : actualOutput) {
             if ("earth.gif".equals(p.imgFileName)) {
                 foundEarth = true;
-                if (!doubleEquals(p.xxPos, 1.4960e+11, 0.01)) {
+                if (!doubleEquals(p.xxPos, -1.4960e+11, 0.01)) {
                     System.out.println("Advice: Your Earth doesn't have the right xxPos!");
                     randomChecksOkay = false;
                 }
