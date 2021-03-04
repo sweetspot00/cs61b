@@ -27,7 +27,7 @@ public class NBody{
         return mer.find();
     }
  
-    public static Planet[] readBodies(String filename){
+    public static Planet[] readPlanets(String filename){
         ArrayList<Planet> b = new ArrayList<Planet>();
         try {
             File myObj = new File(filename);
