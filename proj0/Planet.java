@@ -26,7 +26,7 @@ public class Planet{
         double dist = Math.sqrt(Math.pow(this.xxPos-b.xxPos,2)+Math.pow(this.yyPos-b.yyPos,2));
         return dist;
     }
-    public double calcForceExrtedBy(Planet b){
+    public double calcForceExertedBy(Planet b){
         double dist = this.calcDistance(b);
         double force = this.mass*b.mass*G/Math.pow(dist, 2);
         return force;
