@@ -78,7 +78,7 @@ public class NBody{
         String filename = args[2];
         String background= "images/starfield.jpg";
         double radius = readRadius(filename);
-        Planet[] bodies = readBodies(filename);
+        Planet[] bodies = readPlanets(filename);
         
         for(double time=0;time<=T;time +=dt){
             double[] xForces = new double[bodies.length];
