@@ -41,20 +41,20 @@ public class Planet{
     }
     public double calcNetForceExertedByX(Planet[] b){
         double res=0;
-        for(Planet Planet:b){
-            if(this.equals(Planet)){continue;}
+        for(Planet body:b){
+            if(this.equals(body)){continue;}
             else{
-            res += this.calcForceExertedByX(Planet);
+            res += this.calcForceExertedByX(body);
             }
         }
         return res;
     }
     public double calcNetForceExertedByY(Planet[] b){
         double res=0;
-        for(Planet planet:b){
-            if(this.equals(planet)){continue;}
+        for(Planet body:b){
+            if(this.equals(body)){continue;}
             else{
-            res += this.calcForceExertedByY(planet);
+            res += this.calcForceExertedByY(body);
             }
         }
         return res;        

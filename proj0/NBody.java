@@ -27,8 +27,8 @@ public class NBody{
         return mer.find();
     }
  
-    public static Body[] readBodies(String filename){
-        ArrayList<Body> b = new ArrayList<Body>();
+    public static Planet[] readBodies(String filename){
+        ArrayList<Planet> b = new ArrayList<Planet>();
         try {
             File myObj = new File(filename);
             Scanner myReader = new Scanner(myObj);
@@ -41,14 +41,14 @@ public class NBody{
                     if(d.length==7 && isDouble(d[1])) {
                     
                         System.out.println(d[0]+"this is the img");
-                        b.add(new Body(Double.parseDouble(d[1]),
+                        b.add(new Planet(Double.parseDouble(d[1]),
                         Double.parseDouble(d[2]),
                         Double.parseDouble(d[3]),
                         Double.parseDouble(d[4]),
                         Double.parseDouble(d[5]),
                         d[6]));}
                     else if(d.length==6 && isDouble(d[0])){
-                        b.add(new Body(Double.parseDouble(d[0]),
+                        b.add(new Planet(Double.parseDouble(d[0]),
                         Double.parseDouble(d[1]),
                         Double.parseDouble(d[2]),
                         Double.parseDouble(d[3]),
@@ -68,8 +68,8 @@ public class NBody{
             e.printStackTrace();
           }
            
-        Body[] res = new Body[b.size()] ;
-        res = (Body[]) b.toArray(res);
+        Planet[] res = new Planet[b.size()] ;
+        res = (Planet[]) b.toArray(res);
         return res;    
     }
     public static void main(String[] args){
@@ -78,7 +78,7 @@ public class NBody{
         String filename = args[2];
         String background= "images/starfield.jpg";
         double radius = readRadius(filename);
-        Body[] bodies = readBodies(filename);
+        Planet[] bodies = readBodies(filename);
         
         for(double time=0;time<=T;time +=dt){
             double[] xForces = new double[bodies.length];
@@ -101,7 +101,7 @@ public class NBody{
             /* Shows the drawing to the screen, and waits 2000 milliseconds. */
             
             StdDraw.pause(2000);
-            for(Body b:bodies){
+            for(Planet b:bodies){
                 b.draw();
             }
             
