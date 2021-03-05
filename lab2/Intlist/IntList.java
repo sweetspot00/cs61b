@@ -1,3 +1,5 @@
+import com.sun.security.auth.module.NTLoginModule;
+
 import java.util.Formatter;
 
 /**
@@ -82,7 +84,12 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList head = A;
+        while(A.rest!=null){
+            A = A.rest;
+        }
+        A.rest = B;
+        return head;
     }
 
     /**
@@ -91,7 +98,16 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList tmpA = new IntList(A.first,A.rest);
+        IntList head = tmpA;
+        while(tmpA.rest!=null){
+            tmpA.rest = new IntList(tmpA.rest.first, tmpA.rest.rest);
+            tmpA = tmpA.rest;
+
+        }
+        tmpA.rest = B;
+
+        return head;
     }
 
 
