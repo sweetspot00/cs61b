@@ -26,15 +26,17 @@ public class TestArrayDequeGold {
                 Integer myx = my.removeLast();
                 Integer cx = corr.removeLast();
                 message.append("removeLast()\n");
-                assertEquals(message.toString(), cx, myx);
+                assertEquals(cx, myx);
+                fail(message.toString());
+
             } else {
                 if (my.size() == 0) {
                     continue;
                 }
                 Integer myx = my.removeFirst();
                 Integer cx = corr.removeFirst();
-                message.append("removeFirst()\n");
-                assertEquals(message.toString(), cx, myx);
+                assertEquals(cx, myx);
+                fail(message.toString());
             }
             i += 1;
 //            System.out.print("my:");
