@@ -7,26 +7,30 @@ public class TestArrayDequeGold {
     public void testDeque() {
         StudentArrayDeque<Integer> my = new StudentArrayDeque<Integer>();
         ArrayDequeSolution<Integer> corr = new ArrayDequeSolution<Integer>();
-        int i = 0;
-        StringBuilder message = new StringBuilder();
-        while (i < 100) {
+
+//        StringBuilder message = new StringBuilder();
+        while (true) {
             double numberBetweenZeroAndOne = StdRandom.uniform();
+            int number = StdRandom.uniform(10);
             if (numberBetweenZeroAndOne < 0.25) {
-                my.addFirst(i);
-                corr.addFirst(i);
-                message.append(String.format("addFirst(%d)\n", i));
+                my.addFirst(number);
+                corr.addFirst(number);
+//                message.append(String.format("addFirst(%d)\n", i));
+                System.out.printf("addFirst(%d)\n",number);
             } else if (numberBetweenZeroAndOne < 0.5 && numberBetweenZeroAndOne >= 0.25) {
-                my.addLast(i);
-                corr.addLast(i);
-                message.append(String.format("addLast(%d)\n", i));
+                my.addLast(number);
+                corr.addLast(number);
+//                message.append(String.format("addLast(%d)\n", i));
+                System.out.printf("addFirst(%d)\n", number);
             } else if (numberBetweenZeroAndOne >= 0.5 && numberBetweenZeroAndOne < 0.75) {
                 if (my.size() == 0) {
                     continue;
                 }
                 Integer myx = my.removeLast();
                 Integer cx = corr.removeLast();
-                message.append("removeLast()\n");
-                assertEquals(message.toString(), cx, myx);
+//                message.append("removeLast()\n");
+                assertEquals(cx, myx);
+                System.out.print("removeLast()\n");
 
             } else {
                 if (my.size() == 0) {
@@ -34,18 +38,15 @@ public class TestArrayDequeGold {
                 }
                 Integer myx = my.removeFirst();
                 Integer cx = corr.removeFirst();
-                assertEquals(message.toString(), cx, myx);
+//                assertEquals(message.toString(), cx, myx);
+                System.out.print("removeFirst()\n");
             }
-            i += 1;
 //            System.out.print("my:");
 //            my.printDeque();
 //            System.out.print("correct:");
 //            corr.printDeque();
 
         }
-    }
-    public static void main(String[] args) {
-        jh61b.junit.TestRunner.runTests();
     }
 
 }
