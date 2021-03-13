@@ -15,7 +15,7 @@ public class TestOffByOne {
         char f = 'b';
         char g = '$';
         char h = '(';
-        char i = ')'
+        char i = ')';
         assertTrue(offByOne.equalChars(a, b));
         assertFalse(offByOne.equalChars(c, d));
         assertFalse(offByOne.equalChars(e, f));
