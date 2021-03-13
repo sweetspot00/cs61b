@@ -15,10 +15,12 @@ public class TestOffByOne {
         char f = 'b';
         char g = '$';
         char h = '(';
+        char i = ')'
         assertTrue(offByOne.equalChars(a, b));
         assertFalse(offByOne.equalChars(c, d));
         assertFalse(offByOne.equalChars(e, f));
         assertFalse(offByOne.equalChars(g, h));
+        assertTrue(offByOne.equalChars(h, i));
     }
 
     // Your tests go here.
