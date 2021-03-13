@@ -6,14 +6,20 @@ public class TestOffByOne {
     // new ones, or the autograder might be upset.
     static CharacterComparator offByOne = new OffByOne();
     @Test
-    public void testequalChars(){
+    public void testequalChars() {
         char a = 'a';
         char b = 'b';
         char c = 's';
         char d = 'q';
-        assertTrue(offByOne.equalChars(a,b));
-        assertFalse(offByOne.equalChars(c,d));
+        char e = 'A';
+        char f = 'b';
+        char g = '$';
+        char h = '(';
+        assertTrue(offByOne.equalChars(a, b));
+        assertFalse(offByOne.equalChars(c, d));
+        assertFalse(offByOne.equalChars(e, f));
+        assertFalse(offByOne.equalChars(g, h));
     }
 
     // Your tests go here.
-} /*Uncomment this class once you've created your CharacterComparator interface and OffByOne class. **/
+}

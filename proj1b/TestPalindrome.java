@@ -16,7 +16,7 @@ public class TestPalindrome {
         assertEquals("persiflage", actual);
     }
     @Test
-    public void testisPalindrome(){
+    public void testisPalindrome() {
         String a = "";
         String b = "b";
         String c = "asdsa";
@@ -31,18 +31,18 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(f));
     }
     @Test
-    public void testisPalindrome1(){
+    public void testisPalindrome1() {
         CharacterComparator cc = new OffByOne();
         String a = "flake";
         String b = "arqb";
         String c = "";
         String d = "s";
         String e = "aaaa";
-        assertTrue(palindrome.isPalindrome(a,cc));
-        assertTrue(palindrome.isPalindrome(b,cc));
-        assertTrue(palindrome.isPalindrome(c,cc));
-        assertTrue(palindrome.isPalindrome(d,cc));
-        assertFalse(palindrome.isPalindrome(e,cc));
+        assertTrue(palindrome.isPalindrome(a, cc));
+        assertTrue(palindrome.isPalindrome(b, cc));
+        assertTrue(palindrome.isPalindrome(c, cc));
+        assertTrue(palindrome.isPalindrome(d, cc));
+        assertFalse(palindrome.isPalindrome(e, cc));
 
     }
-}     //Uncomment this class once you've created your Palindrome class.
+}
