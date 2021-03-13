@@ -31,9 +31,7 @@ public class TestArrayDequeGold {
                 assertEquals(cx, myx);
 
             } else if (numberBetweenZeroAndOne >= 0.75 && !my.isEmpty() && !corr.isEmpty()) {
-                if (my.size() == 0) {
-                    continue;
-                }
+
                 Integer myx = my.removeFirst();
                 Integer cx = corr.removeFirst();
                 System.out.print("removeFirst()\n");
