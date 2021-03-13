@@ -6,7 +6,7 @@ public class AssertEqualsStringDemo {
     @Test
     public void test1() {
         int expected = 20;
-        int actual = StdRandom.uniform(4);
+        int actual = 234;
         assertEquals("Oh noooo!\nThis is bad:\n   Random number " + actual 
                      + " not equal to " + expected + "!", 
                      expected, actual);

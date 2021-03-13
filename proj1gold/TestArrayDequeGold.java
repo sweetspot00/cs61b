@@ -26,8 +26,7 @@ public class TestArrayDequeGold {
                 Integer myx = my.removeLast();
                 Integer cx = corr.removeLast();
                 message.append("removeLast()\n");
-                assertEquals(cx, myx);
-                fail(message.toString());
+                assertEquals(message.toString(), cx, myx);
 
             } else {
                 if (my.size() == 0) {
@@ -35,8 +34,7 @@ public class TestArrayDequeGold {
                 }
                 Integer myx = my.removeFirst();
                 Integer cx = corr.removeFirst();
-                assertEquals(cx, myx);
-                fail(message.toString());
+                assertEquals(message.toString(), cx, myx);
             }
             i += 1;
 //            System.out.print("my:");
@@ -45,7 +43,9 @@ public class TestArrayDequeGold {
 //            corr.printDeque();
 
         }
-
-
     }
+    public static void main(String[] args) {
+        jh61b.junit.TestRunner.runTests();
+    }
+
 }
