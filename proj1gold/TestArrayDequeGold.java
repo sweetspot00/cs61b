@@ -9,16 +9,16 @@ public class TestArrayDequeGold {
         ArrayDequeSolution<Integer> corr = new ArrayDequeSolution<Integer>();
         int i = 0;
         StringBuilder message = new StringBuilder();
-        while (i < 10000) {
+        while (i < 100) {
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.25) {
                 my.addFirst(i);
                 corr.addFirst(i);
-                message.append(String.format("addLast(%d)\n", i));
+                message.append(String.format("addFirst(%d)\n", i));
             } else if (numberBetweenZeroAndOne < 0.5 && numberBetweenZeroAndOne >= 0.25) {
                 my.addLast(i);
                 corr.addLast(i);
-                message.append(String.format("addFirst(%d)\n", i));
+                message.append(String.format("addLast(%d)\n", i));
             } else if (numberBetweenZeroAndOne >= 0.5 && numberBetweenZeroAndOne < 0.75) {
                 if (my.size() == 0) {
                     continue;
@@ -37,6 +37,10 @@ public class TestArrayDequeGold {
                 assertEquals(message.toString(), cx, myx);
             }
             i += 1;
+            System.out.print("my:");
+            my.printDeque();
+//            System.out.print("correct:");
+//            corr.printDeque();
 
         }
 
