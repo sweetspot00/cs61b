@@ -37,8 +37,8 @@ public class TestArrayDequeGold {
                 assertEquals(message.toString(), cx, myx);
             }
             i += 1;
-            System.out.print("my:");
-            my.printDeque();
+//            System.out.print("my:");
+//            my.printDeque();
 //            System.out.print("correct:");
 //            corr.printDeque();
 
