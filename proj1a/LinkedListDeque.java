@@ -1,4 +1,4 @@
-public class LinkedListDeque<T>  {
+public class LinkedListDeque<T> {
     private class IntNode {
         T item;
         IntNode next;
@@ -128,3 +128,4 @@ public class LinkedListDeque<T>  {
     }
 
 }
+
