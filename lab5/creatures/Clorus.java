@@ -1,5 +1,4 @@
 package creatures;
-
 import huglife.Action;
 import huglife.Creature;
 import huglife.Direction;
@@ -11,12 +10,7 @@ import java.util.Deque;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * An implementation of a motile pacifist photosynthesizer.
- *
- * @author Josh Hug
- */
-public class Plip extends Creature {
+public class Clorus extends Creature {
 
     /**
      * red color.
@@ -34,8 +28,8 @@ public class Plip extends Creature {
     /**
      * creates plip with energy equal to E.
      */
-    public Plip(double e) {
-        super("plip");
+    public Clorus(double e) {
+        super("clorus");
         r = 0;
         g = 0;
         b = 0;
@@ -45,7 +39,7 @@ public class Plip extends Creature {
     /**
      * creates a plip with energy equal to 1.
      */
-    public Plip() {
+    public Clorus() {
         this(1);
     }
 
@@ -59,14 +53,14 @@ public class Plip extends Creature {
      */
     @Override
     public Color color() {
-        g = (int) (96 * energy + 63);
-        r = 99;
-        b = 76;
+        r = 34;
+        g = 0;
+        b = 231;
         return color(r, g, b);
     }
     @Override
     public String name() {
-        return "plip";
+        return "clorus";
     }
 
     /**
@@ -74,6 +68,7 @@ public class Plip extends Creature {
      */
     public void attack(Creature c) {
         // do nothing.
+        this.energy += c.energy();
     }
 
     /**
@@ -82,8 +77,7 @@ public class Plip extends Creature {
      * private static final variable. This is not required for this lab.
      */
     public void move() {
-        //TODO
-        energy = (energy < 0.15) ? 0.0 : energy - 0.15;
+        energy = (energy < 0.03) ? 0.0 : energy - 0.03;
     }
 
 
@@ -91,8 +85,7 @@ public class Plip extends Creature {
      * Plips gain 0.2 energy when staying due to photosynthesis.
      */
     public void stay() {
-        // TODO
-        energy = (energy > 1.8) ? 2.0 : energy + 0.2;
+        energy = (energy < 0.01) ? 0.0 : energy - 0.01;
 
     }
 
@@ -101,8 +94,8 @@ public class Plip extends Creature {
      * lost to the process. Now that's efficiency! Returns a baby
      * Plip.
      */
-    public Plip replicate() {
-        Plip child = new Plip(this.energy / 2.0);
+    public Clorus replicate() {
+        Clorus child = new Clorus(this.energy / 2.0);
         this.energy = this.energy / 2.0;
 
         return child;
@@ -124,37 +117,34 @@ public class Plip extends Creature {
     public Action chooseAction(Map<Direction, Occupant> neighbors) {
         // Rule 1
         Deque<Direction> emptyNeighbors = new ArrayDeque<>();
-        boolean anyClorus = false;
-        // TODO
+        Deque<Direction> plips = new ArrayDeque<>();
         // (Google: Enhanced for-loop over keys of NEIGHBORS?)
         // for () {...}
         for (Direction key : neighbors.keySet()) {
             if (neighbors.get(key).name().equals("empty")) {
                 emptyNeighbors.add(key);
-            } else if (neighbors.get(key).name().equals("clorus")) {
-                anyClorus = true;
+            } else if (neighbors.get(key).name().equals("plip")) {
+                plips.add(key);
             }
         }
         if (emptyNeighbors.size() == 0) {
             return new Action(Action.ActionType.STAY);
+        } else if (plips.size() != 0) { // Rule 3
+            Random r = new Random();
+            int number = r.nextInt(plips.size());
+            return new Action(Action.ActionType.ATTACK, (Direction) (plips.toArray())[number]);
         } else if (this.energy >= 1.0) {
             Random r = new Random();
             int number = r.nextInt(emptyNeighbors.size());
             return new Action(Action.ActionType.REPLICATE,
                     (Direction) (emptyNeighbors.toArray())[number]);
-        } else if (anyClorus) { // Rule 3
-            Random r = new Random();
-            boolean moveornot = r.nextBoolean();
-            if (moveornot) {
-                int position = r.nextInt(emptyNeighbors.size());
-                return new Action(Action.ActionType.MOVE,
-                        (Direction) (emptyNeighbors.toArray())[position]);
-            } else {
-                return new Action(Action.ActionType.STAY);
-            }
         } else {
-            return new Action(Action.ActionType.STAY);
+            Random r = new Random();
+            int number = r.nextInt(emptyNeighbors.size());
+            return new Action(Action.ActionType.MOVE,
+                    (Direction) (emptyNeighbors.toArray())[number]);
         }
-
     }
 }
+
+

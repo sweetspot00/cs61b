@@ -1,40 +1,36 @@
 package creatures;
+
+import huglife.*;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import java.awt.*;
 import java.util.HashMap;
-import java.awt.Color;
-import huglife.Direction;
-import huglife.Action;
-import huglife.Occupant;
-import huglife.Impassible;
-import huglife.Empty;
 
-/** Tests the plip class
- *  @authr FIXME
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
-public class TestPlip {
+public class TestClorus {
 
     @Test
     public void testBasics() {
-        Plip p = new Plip(2);
+        Clorus p = new Clorus(2);
         assertEquals(2, p.energy(), 0.01);
-        assertEquals(new Color(99, 255, 76), p.color());
+        assertEquals(new Color(34, 0, 231), p.color());
         p.move();
-        assertEquals(1.85, p.energy(), 0.01);
+        assertEquals(1.97, p.energy(), 0.01);
         p.move();
-        assertEquals(1.70, p.energy(), 0.01);
+        assertEquals(1.94, p.energy(), 0.01);
         p.stay();
-        assertEquals(1.90, p.energy(), 0.01);
+        assertEquals(1.93, p.energy(), 0.01);
         p.stay();
-        assertEquals(2.00, p.energy(), 0.01);
+        assertEquals(1.92, p.energy(), 0.01);
     }
 
     @Test
     public void testReplicate() {
         // TODO
-        Plip p = new Plip(1.6);
-        Plip child = p.replicate();
+        Clorus p = new Clorus(1.6);
+        Clorus child = p.replicate();
         assertEquals(0.8, child.energy(), 0.01);
         assertEquals(0.8, p.energy(), 0.01);
         assertNotEquals(p, child);
@@ -44,7 +40,7 @@ public class TestPlip {
     public void testChoose() {
 
         // No empty adjacent spaces; stay.
-        Plip p = new Plip(1.2);
+        Clorus p = new Clorus(1.2);
         HashMap<Direction, Occupant> surrounded = new HashMap<Direction, Occupant>();
         surrounded.put(Direction.TOP, new Impassible());
         surrounded.put(Direction.BOTTOM, new Impassible());
@@ -58,7 +54,7 @@ public class TestPlip {
 
 
         // Energy >= 1; replicate towards an empty space.
-        p = new Plip(1.2);
+        p = new Clorus(1.2);
         HashMap<Direction, Occupant> topEmpty = new HashMap<Direction, Occupant>();
         topEmpty.put(Direction.TOP, new Empty());
         topEmpty.put(Direction.BOTTOM, new Impassible());
@@ -71,38 +67,27 @@ public class TestPlip {
         assertEquals(expected, actual);
 
 
-        // Energy >= 1; replicate towards an empty space.
-        p = new Plip(1.2);
-        HashMap<Direction, Occupant> allEmpty = new HashMap<Direction, Occupant>();
-        allEmpty.put(Direction.TOP, new Empty());
-        allEmpty.put(Direction.BOTTOM, new Empty());
-        allEmpty.put(Direction.LEFT, new Empty());
-        allEmpty.put(Direction.RIGHT, new Empty());
+        // MOVE.
+        p = new Clorus(0.8);
 
-        actual = p.chooseAction(allEmpty);
-        Action unexpected = new Action(Action.ActionType.STAY);
-
-        assertNotEquals(unexpected, actual);
-
-
-        // Energy < 1; stay.
-        p = new Plip(.99);
-
-        actual = p.chooseAction(allEmpty);
-        expected = new Action(Action.ActionType.STAY);
-
-        assertEquals(expected, actual);
-
-
-        // Energy < 1; stay.
-        p = new Plip(.99);
 
         actual = p.chooseAction(topEmpty);
-        expected = new Action(Action.ActionType.STAY);
+        expected = new Action(Action.ActionType.MOVE, Direction.TOP);
 
         assertEquals(expected, actual);
 
 
-        // We don't have Cloruses yet, so we can't test behavior for when they are nearby right now.
+
+        // Attack
+        p = new Clorus(1.2);
+        HashMap<Direction, Occupant> oneplip = new HashMap<Direction, Occupant>();
+        oneplip.put(Direction.TOP, new Empty());
+        oneplip.put(Direction.BOTTOM, new Empty());
+        oneplip.put(Direction.LEFT, new Empty());
+        oneplip.put(Direction.RIGHT, new Plip());
+        actual = p.chooseAction(oneplip);
+        expected = new Action(Action.ActionType.ATTACK, Direction.RIGHT);
+        assertEquals(expected, actual);
+
     }
 }
