@@ -103,6 +103,7 @@ public class HugLife {
             addCreature(12, 12, new Plip());
             addCreature(4, 3, new Plip());
         } else if (worldName.equals("strugggz")) {
+            /*
             System.out.println("You need to uncomment the strugggz test!");
             addCreature(11, 1, new SampleCreature());
             addCreature(12, 12, new Plip());
@@ -110,6 +111,8 @@ public class HugLife {
             addCreature(4, 3, new Plip());
 
             addCreature(2, 2, new Clorus(1));
+
+             */
         } else {
             System.out.println("World name not recognized!");
         }

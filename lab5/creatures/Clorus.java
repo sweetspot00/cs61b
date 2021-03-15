@@ -77,7 +77,7 @@ public class Clorus extends Creature {
      * private static final variable. This is not required for this lab.
      */
     public void move() {
-        energy = (energy < 0.03) ? 0.0 : energy - 0.03;
+        energy = energy - 0.03;
     }
 
 
@@ -85,7 +85,7 @@ public class Clorus extends Creature {
      * Plips gain 0.2 energy when staying due to photosynthesis.
      */
     public void stay() {
-        energy = (energy < 0.01) ? 0.0 : energy - 0.01;
+        energy = energy - 0.01;
 
     }
 
