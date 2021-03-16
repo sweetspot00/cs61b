@@ -33,5 +33,6 @@ public class TestArrayRingBuffer {
         arb.enqueue(0);
         actual = arb.fillCount();
         assertEquals(5,actual);
+        assertTrue(arb.isFull());
     }
 }

@@ -45,11 +45,18 @@ public class TestGuitarString {
 
         double s5 = s.sample();
         double expected = 0.996 * 0.5 * (s1 + s2);
-
+        s.tic();
+        double s6 = s.sample();
+        s.tic();
+        double s7 = s.sample();
+        s.tic();
+        double s8 = s.sample();
+        expected =  0.996 * 0.5 * (s4 + s5);
         // Check that new sample is correct, using tolerance of 0.001.
         // See JUnit documentation for a description of how tolerances work
         // for assertEquals(double, double)
-        assertEquals(expected, s5, 0.001);
+//        assertEquals(4,s.buffer.fillCount());
+        assertEquals(expected, s8, 0.001);
 
     }
 
