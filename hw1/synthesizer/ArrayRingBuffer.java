@@ -12,7 +12,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Bound
     /* Index for the next enqueue. */
     private int last;
     /* Variable for the fillCount. */
-    private int fillCount;
+//    private int fillCount;
     /* Array for storing the buffer data. */
     private T[] rb;
     /**
@@ -21,6 +21,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Bound
     public ArrayRingBuffer(int capacity) {
         // TODO: Create new array with capacity elements.
         //       first, last, and fillCount should all be set to 0.
+        super();
         rb = (T[]) new Object[capacity];
         first = 0;
         last = 0;
@@ -53,13 +54,18 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Bound
     public void enqueue(T x) {
         // TODO: Enqueue the item. Don't forget to increase fillCount and update
         //       last.
-        if (fillCount == capacity) {
+        if (this.isFull()) {
             throw new RuntimeException("Ring buffer overflow");
         } else {
             rb[last] = x;
             last = (last + 1) % capacity;
-            fillCount += 1;
+            this.fillCount += 1;
         }
+//        int superFC = this.fillCount();
+//        int superCC = this.capacity();
+//        boolean isE = this.isEmpty();
+//        boolean isF = this.isFull();
+
     }
 
     /**
@@ -70,7 +76,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Bound
     public T dequeue() {
         // TODO: Dequeue the first item. Don't forget to decrease fillCount and
         //       update first.
-        if (fillCount == 0) {
+        if (this.isEmpty()) {
             throw new RuntimeException("Ring buffer underflow");
         } else {
             T res = rb[first];
@@ -94,6 +100,8 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Bound
         } else {
             return rb[first];
         }
+
+
     }
 
     // TODO: When you get to part 4, implement the needed code to support

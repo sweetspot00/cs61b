@@ -22,13 +22,16 @@ public class TestArrayRingBuffer {
         arb.dequeue();
         arb.dequeue();
         arb.dequeue();
+        assertTrue(arb.isEmpty());
         arb.enqueue(1);
         arb.enqueue(4);
 
-        actual = arb.peek();
+//        actual = arb.peek();
 //        assertEquals(0, actual);
         arb.enqueue(6);
         arb.enqueue(8);
         arb.enqueue(0);
+        actual = arb.fillCount();
+        assertEquals(5,actual);
     }
 }
