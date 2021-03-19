@@ -41,7 +41,7 @@ public class PercolationStats {
         double mean = mean();
         double sum = 0.0;
         for (Double d : estimateRes) {
-            sum += Math.pow((d-mean),2);
+            sum += Math.pow((d - mean), 2);
         }
         return Math.pow((sum / (times - 1)), 0.5);
 
