@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
     private int graphSize;
-    private boolean site[][];
+    private boolean[][] site;
     private WeightedQuickUnionUF unionSet;
     private int openNum;
     private WeightedQuickUnionUF noGroundUnionSet;
@@ -62,18 +62,14 @@ public class Percolation {
             noGroundUnionSet.union(coor2num(row, col + 1), num);
 
         }
-        if (row == 0 && graphSize - 1 != 0) {
+        if (row == 0) {
             unionSet.union(num, 0);
             noGroundUnionSet.union(num, 0);
-        } else if (row == graphSize - 1 && graphSize - 1 != 0) {
-            if (!percolates()) {
-                unionSet.union(num, graphSize * graphSize + 1);
-            }
-
-        } else if (row == 0 && graphSize - 1 == 0) { //N = 1
-            unionSet.union(0, graphSize * graphSize + 1);
-            unionSet.union(num, 0);
         }
+        if (row == graphSize - 1) {
+            unionSet.union(num, graphSize * graphSize + 1);
+        }
+
 
     }
 
