@@ -16,7 +16,7 @@ public class MyHashMap<K, V> implements Map61B<K, V>{
     private static final int DEFAULT_SIZE = 16;
     private double MAX_LF = 0.75;
 
-    private HashSet<Node>[] buckets;
+    private HashSet<Node>[] buckets;//用linkedList实现可能会更快，hashset实现超时
     private int size;
 
     private double loadFactor() {
