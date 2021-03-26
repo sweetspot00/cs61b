@@ -1,5 +1,6 @@
 package hw3.hash;
 import java.awt.Color;
+import java.util.Objects;
 import java.util.Random;
 
 import edu.princeton.cs.algs4.StdRandom;
@@ -48,7 +49,7 @@ public class SimpleOomage implements Oomage {
             String greenn = green + "green";
             String bluee = "blue" + blue + "blue";
 
-            return redd.hashCode() + greenn.hashCode() + bluee.hashCode();
+            return Objects.hash(redd, greenn, bluee);
         }
     }
 
