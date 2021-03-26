@@ -45,8 +45,8 @@ public class SimpleOomage implements Oomage {
 //            hash = hash * 31 + greenn;
 //            hash = hash * 31 + bluee;
             String redd = "red" + red;
-            String greenn = "green" + green;
-            String bluee = "blue" + blue;
+            String greenn = green + "green";
+            String bluee = "blue" + blue + "blue";
 
             return redd.hashCode() + greenn.hashCode() + bluee.hashCode();
         }

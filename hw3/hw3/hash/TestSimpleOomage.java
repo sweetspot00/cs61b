@@ -35,7 +35,7 @@ public class TestSimpleOomage {
         SimpleOomage a = new SimpleOomage(red.get(0), green, blue.getFirst());
         SimpleOomage b = new SimpleOomage(red.get(0), green, blue.getFirst());
         SimpleOomage c = new SimpleOomage(red.get(2), green, blue.getLast());
-        SimpleOomage d = new SimpleOomage(0, 0, 155);
+        SimpleOomage d = new SimpleOomage(0, 0, 5);
         SimpleOomage e = new SimpleOomage(0, 5, 0);
         assertEquals(a.hashCode(), b.hashCode());
         assertNotEquals(a.hashCode(), c.hashCode());
