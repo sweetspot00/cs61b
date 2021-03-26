@@ -1,5 +1,7 @@
 package hw3.hash;
 import java.awt.Color;
+import java.util.Random;
+
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdDraw;
 
@@ -14,7 +16,7 @@ public class SimpleOomage implements Oomage {
 
     @Override
     public boolean equals(Object o) {
-        // TODO: Write this method.
+
         if (o == this) {
             return true;
         }
@@ -22,11 +24,7 @@ public class SimpleOomage implements Oomage {
             return false;
         } else {
             SimpleOomage that = (SimpleOomage) o;
-            if (that.blue == this.blue && this.red == that.red && this.green == that.green) {
-                return true;
-            } else {
-                return false;
-            }
+            return that.blue == this.blue && this.red == that.red && this.green == that.green;
         }
 
     }
@@ -37,11 +35,15 @@ public class SimpleOomage implements Oomage {
         if (!USE_PERFECT_HASH) {
             return red + green + blue;
         } else { //31:用质数得到的hashcode重复率低；31*i 可以用 (i << 5) - i 优化
+            Random r = new Random();
+            int redd = (red == 0) ? 1 : red;
+            int greenn = (green == 0) ? 1 : green;
+            int bluee = (red == 0) ? 1 : blue;
             int hash = 17;
-            hash = hash * 31 + red;
-            hash = hash * 31 + green;
-            hash = hash * 31 + blue;
-            // TODO: Write a perfect hash function for Simple Oomages.
+            int random = r.nextInt(255);
+            hash = hash * 31 + redd + random;
+            hash = hash * 31 + greenn + random;
+            hash = hash * 31 + bluee + random;
             return hash;
         }
     }
