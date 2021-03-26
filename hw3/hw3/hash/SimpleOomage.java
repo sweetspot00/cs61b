@@ -32,19 +32,23 @@ public class SimpleOomage implements Oomage {
 
     @Override
     public int hashCode() {
+        int maxx = Integer.MAX_VALUE;
         if (!USE_PERFECT_HASH) {
             return red + green + blue;
         } else { //31:用质数得到的hashcode重复率低；31*i 可以用 (i << 5) - i 优化
             Random r = new Random();
-            int redd = (red == 0) ? 1 : red;
-            int greenn = (green == 0) ? 1 : green;
-            int bluee = (red == 0) ? 1 : blue;
-            int hash = 17;
-            int random = r.nextInt(255);
-            hash = hash * 31 + redd + random;
-            hash = hash * 31 + greenn + random;
-            hash = hash * 31 + bluee + random;
-            return hash;
+//            int redd = (red == 0) ? 1 : red;
+//            int greenn = (green == 0) ? 2 : green;
+//            int bluee = (red == 0) ? 3 : blue;
+//            int hash = 17;
+//            hash = hash + (redd + 12) * 31;
+//            hash = hash * 31 + greenn;
+//            hash = hash * 31 + bluee;
+            String redd = "red" + red;
+            String greenn = "green" + green;
+            String bluee = "blue" + blue;
+
+            return redd.hashCode() + greenn.hashCode() + bluee.hashCode();
         }
     }
 
